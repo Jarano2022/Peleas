@@ -8,7 +8,6 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start"],
       "skipFiles": ["<node_internals>/**"],
-      "console": "integratedTerminal"
     },
     {
       "type": "node",
@@ -17,7 +16,6 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "skipFiles": ["<node_internals>/**"],
-      "console": "integratedTerminal",
       "restart": true
     },
     {

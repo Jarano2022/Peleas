@@ -1,20 +1,19 @@
-const express = require("express");
-const cors = require("cors"); // Asegúrate de tener instalado 'cors' vía npm
-const routes = require("./routes");
-const path = require("path");
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const routes = require('./routes');
+const { verificarToken } = require('./middleware/auth');
 
 const app = express();
 
-// 1. Configurar CORS primero
-app.use(cors({ origin: "12.10.10.67" }));
+app.use(cors({ origin: '12.10.10.67' }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// 2. Otras configuraciones (JSON, etc.)
-app.use(express.json()); // Para peticiones fetch/JSON
-app.use(express.urlencoded({ extended: true })); // Para formularios HTML
+const publicPath = path.join(__dirname, '..', 'public');
+app.use('/dashboardFiles', verificarToken, express.static(path.join(publicPath, 'dashboardFiles')));
+app.use(express.static(publicPath));
 
-app.use(express.static(path.join(__dirname, '..', 'public')));
-
-// 3. Rutas
-app.use("/", routes);
+app.use('/', routes);
 
 module.exports = app;

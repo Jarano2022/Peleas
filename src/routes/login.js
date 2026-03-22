@@ -1,10 +1,10 @@
-express = require('express');
+const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const app = express();
+const router = express.Router();
 
-app.get('/', (req, res) => {
-    const ruta = path.join(__dirname, '..', '..', 'public', 'login', 'index.html');
+router.get('/', (req, res) => {
+    const ruta = path.join(__dirname, '..', '..', 'public', 'loginFiles', 'index.html');
     fs.readFile(ruta, (err, data) => {
         if (err) {
             res.status(500).send(`Error reading index.html: ${err.message}`);
@@ -16,4 +16,4 @@ app.get('/', (req, res) => {
     });
 });
 
-module.exports = app;
+module.exports = router;

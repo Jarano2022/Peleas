@@ -1,10 +1,13 @@
-const express = require('express');
+// Función para manejar las rutas de la aplicación
+const routes = require('express').Router();
 
-const routes = express.Router();
+// Importar las rutas
 const login = require('./login');
 const api = require('./Api');
+const dashboard = require('./dashboard');
 
-routes.get('/', login);
+routes.use('/', login);
 routes.use('/api', api);
+routes.use('/dashboard', dashboard);
 
 module.exports = routes;

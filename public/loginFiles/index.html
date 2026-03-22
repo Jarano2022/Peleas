@@ -100,10 +100,9 @@
                         localStorage.setItem("8e5d2d9d3b", responseData.token);
 
                         // Ahora sí redigimos
-                        window.location.href = "/dashboard.html";
                         mensajeDiv.style.color = "green";
                         mensajeDiv.innerText = "¡Bienvenido! Redirigiendo...";
-                        // Aquí podrías usar: window.location.href = "/dashboard";
+                        window.location.href = "/dashboard";
                     } else {
                         mensajeDiv.style.color = "red";
                         mensajeDiv.innerText =

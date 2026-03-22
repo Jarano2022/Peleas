@@ -19,12 +19,9 @@ const login = async (username, passwordPlana) => {
         const hashGuardado = result.recordset[0].password;
 
         const hashEnDB = result.recordset[0].password;
-        console.log("Hash exacto en DB: '" + hashEnDB + "'"); // Las comillas simples ayudan a ver espacios
-        console.log("Longitud del hash:", hashEnDB.length);
 
         // Validamos con la función auxiliar que creamos
         const esValido = await verificarPassword(passwordPlana, hashGuardado);
-        console.log("¿Es match?:", esValido);
         if (esValido === true) {
             // Forzamos la comparación con true
             return { success: true };

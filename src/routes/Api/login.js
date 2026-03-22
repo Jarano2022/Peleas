@@ -23,6 +23,12 @@ app.post('/', async (req, res) => {
                 SECRET_KEY, 
                 { expiresIn: '1h' }
             );
+            res.cookie('auth_token', token, {
+                httpOnly: true,
+                sameSite: 'lax',
+                secure: process.env.NODE_ENV === 'production',
+                maxAge: 60 * 60 * 1000
+            });
             res.json({ success: true, token });
         } else {
             // Ahora resultado.message sí tendrá el valor correcto
